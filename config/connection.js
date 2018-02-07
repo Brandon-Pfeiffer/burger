@@ -11,9 +11,9 @@ var connection = mysql.createConnection({
 });
 
 
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
+connection.connect(function(error) {
+  if (error) {
+    console.error("error connecting: " + error.stack);
     return;
   }
   console.log("connected as id " + connection.threadId);

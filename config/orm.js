@@ -15,34 +15,34 @@ function jsToSql(sq) {
 
 var orm = {
 
-    selectAll: function(table, cb) {
+    selectAll: function(table, callback) {
         var qString = "SELECT * FROM " + table + ";";
-        connection.query(qString, function(error, res) {
+        connection.query(qString, function(error, result) {
         if (error) {
             throw error;
         }
-        cb(res);
+        callback(result);
         });
     },
 
-    insertOne: function(table, cols, vals, cb) {
+    insertOne: function(table, cols, vals, callback) {
         var qString = "INSERT INTO " + table;
 
         qString += " (";
         qString += cols.toString();
-        qString += ") VALUES ("';
+        qString += ") VALUES (";
         qString += vals;
-        qString += ''") ';
+        qString += ") ";
 
 
-        connection.query(qString, vals, function(error, res) {
+        connection.query(qString, vals, function(error, result) {
         if (error) { throw error;
         }
-        cb(res);
+        callback(result);
         });
     },
 
-    updateOne: function(table, objColVals, condition, cb) {
+    updateOne: function(table, objColVals, condition, callback) {
         
         var qString = "UPDATE " + table;
 
@@ -52,10 +52,10 @@ var orm = {
         qString += condition;
 
 
-        connection.query(qString, function(error, res) {
+        connection.query(qString, function(error, result) {
         if (error) { throw error;
         }
-        cb(res);
+        callback(result);
         });
       }
     };
