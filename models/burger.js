@@ -9,7 +9,7 @@ var burger = {
   },
 
   insertOne: function(cols, vals, callback) {
-    orm.insertOne("burgers", cols, vals, function(res) {
+    orm.insertOne("burgers", cols, vals, function(result) {
         callback(result);
     });
   },
